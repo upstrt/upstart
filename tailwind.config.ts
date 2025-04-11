@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				upstart: {
+					blue: '#1A365D',
+					purple: '#5E3B8F', 
+					teal: '#36B2B0',
+					gold: '#F2C94C',
+					lightBlue: '#EBF4FF',
+					lightPurple: '#F0E6FF',
+					darkBlue: '#0F2A4A'
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +94,26 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'gradient': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'gradient': 'gradient 15s ease infinite',
+			},
+			backgroundImage: {
+				'hero-pattern': "url('/public/lovable-uploads/940c8fee-ecd7-4c7e-91d3-4873257cba7a.png')",
+				'australia-map': "url('/public/lovable-uploads/5bfe903f-bc5f-4b18-9687-cf5720f77500.png')",
 			}
 		}
 	},
