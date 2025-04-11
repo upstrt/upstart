@@ -32,9 +32,12 @@ const Index = () => {
     // Observer all major sections
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
-      // Remove any existing fadeIn class to prevent double animation
-      section.classList.remove('fadeIn');
-      observer.observe(section);
+      // Skip hero section as it has its own animations
+      if (!section.classList.contains('hero-gradient')) {
+        // Remove any existing fadeIn class to prevent double animation
+        section.classList.remove('fadeIn');
+        observer.observe(section);
+      }
     });
     
     return () => {
