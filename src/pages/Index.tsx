@@ -49,9 +49,9 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-white relative overflow-x-hidden">
-      {/* Glass gradient background effect inspired by the image */}
-      <div className="fixed inset-0 bg-gradient-to-br from-yellow-200 via-blue-400 to-purple-700 opacity-5 z-0"></div>
-      <div className="fixed inset-0 backdrop-blur-[120px] z-0"></div>
+      {/* Professional glass gradient background effect */}
+      <div className="fixed inset-0 bg-gradient-to-br from-blue-100/50 via-indigo-100/30 to-white opacity-70 z-0"></div>
+      <div className="fixed inset-0 backdrop-blur-[100px] z-0"></div>
       
       {/* Content */}
       <div className="relative z-10">
