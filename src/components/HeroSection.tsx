@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Calculator, CheckCircle, Star, Code, Users } from "lucide-react";
+import { ArrowRight, Calendar, Calculator, CheckCircle, Star, Terminal, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function HeroSection() {
@@ -11,7 +11,11 @@ export function HeroSection() {
   }, []);
   
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient relative overflow-hidden">
+    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      {/* Glass gradient background inspired by the provided image */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-200 via-blue-400 to-purple-700 opacity-15"></div>
+      <div className="absolute inset-0 backdrop-blur-[100px]"></div>
+      
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-32 -left-32 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-40 animate-float-slow"></div>
@@ -46,10 +50,15 @@ export function HeroSection() {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x">
-                Your Elite Offshore Tech Team:
+                Your Offshore Tech Team:
               </span>
               <br />
-              <span className="gradient-text-hero"> Premium Development at 1/3 the Cost</span>
+              <span className="gradient-text-hero flex items-center gap-2">
+                Premium Development at <div className="relative inline-flex items-center justify-center">
+                  <span className="relative z-10 text-yellow-500 font-extrabold">1/3</span>
+                  <div className="absolute inset-0 bg-yellow-300/20 rounded-full blur-md animate-pulse-subtle"></div>
+                </div> the Cost
+              </span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
@@ -60,37 +69,37 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 flex items-center gap-2 shadow-glow-blue btn-gradient shine"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 flex items-center gap-2 shadow-glow-blue btn-gradient shine group"
                 onClick={() => document.getElementById('savings')?.scrollIntoView({behavior: 'smooth'})}
               >
-                <Calculator className="w-5 h-5" />
-                Calculate Your Savings
-                <ArrowRight className="w-5 h-5 animate-bounce-horizontal" />
+                <Calculator className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Calculate Your Savings</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-blue-500 text-blue-700 hover:bg-blue-50 flex items-center gap-2 shine shadow-sm"
+                className="border-blue-500 text-blue-700 hover:bg-blue-50 flex items-center gap-2 shine shadow-sm group"
               >
-                <Calendar className="w-5 h-5" />
-                Schedule Technical Consultation
+                <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Schedule Technical Consultation</span>
               </Button>
             </div>
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm">
+              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold pulse">
                   <CheckCircle className="w-5 h-5" />
                 </div>
                 <span className="ml-2">Australian Time Zone Coverage</span>
               </div>
-              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm">
+              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold pulse">
                   <CheckCircle className="w-5 h-5" />
                 </div>
-                <span className="ml-2">Senior Developers Only</span>
+                <span className="ml-2">Expert Developers</span>
               </div>
-              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm">
+              <div className="flex items-center px-3 py-2 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="bg-gradient-to-r from-blue-400 to-cyan-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold pulse">
                   <Star className="w-5 h-5" />
                 </div>
@@ -99,45 +108,50 @@ export function HeroSection() {
             </div>
             
             {/* Stats animation */}
-            <div className="pt-4 grid grid-cols-3 gap-2">
-              <div className="flex flex-col items-center p-2 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm">
-                <span className="text-blue-600 font-bold text-lg md:text-xl">1/3</span>
+            <div className="pt-4 grid grid-cols-3 gap-3">
+              <div className="flex flex-col items-center p-3 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                <span className="text-blue-600 font-bold text-2xl md:text-3xl">1/3</span>
                 <span className="text-xs text-gray-600 text-center">The Cost</span>
               </div>
-              <div className="flex flex-col items-center p-2 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm">
-                <span className="text-purple-600 font-bold text-lg md:text-xl">24/7</span>
+              <div className="flex flex-col items-center p-3 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                <span className="text-purple-600 font-bold text-2xl md:text-3xl">24/7</span>
                 <span className="text-xs text-gray-600 text-center">Support</span>
               </div>
-              <div className="flex flex-col items-center p-2 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm">
-                <span className="text-cyan-600 font-bold text-lg md:text-xl">100+</span>
+              <div className="flex flex-col items-center p-3 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                <span className="text-cyan-600 font-bold text-2xl md:text-3xl">100+</span>
                 <span className="text-xs text-gray-600 text-center">Projects</span>
               </div>
             </div>
           </div>
           
           <div className="relative">
-            {/* Background blobs */}
-            <div className="absolute -top-12 -left-12 w-64 h-64 bg-blue-100 rounded-full filter blur-3xl opacity-40 floating"></div>
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-purple-100 rounded-full filter blur-3xl opacity-40 floating"></div>
+            {/* Cost savings visualization */}
+            <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/80 backdrop-blur-sm rounded-full shadow-lg p-4 text-center flex flex-col items-center justify-center transform rotate-12 z-10 animate-float-slow border border-blue-100/50">
+              <span className="text-xs text-blue-700 font-semibold">Save up to</span>
+              <span className="text-3xl font-bold text-blue-600">65%</span>
+              <div className="w-20 h-1 my-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              <span className="text-xs text-gray-700">on development costs</span>
+            </div>
             
             {/* Code snippet animated overlay */}
-            <div className="absolute -top-8 -right-10 md:-right-20 w-40 h-40 rotate-12 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 text-xs overflow-hidden opacity-70 animate-float-slow">
+            <div className="absolute -top-8 -left-10 md:-left-20 w-40 h-40 rotate-[-12deg] bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 text-xs overflow-hidden opacity-90 z-10 animate-float-slow border border-blue-100/50">
               <pre className="text-blue-800 font-mono">
-                <code>{`function deploy() {
-  const client = new 
-    AusClient();
-  return client
-    .optimize()
-    .execute();
-}`}</code>
+                <code>{`// Your code is yours
+const client = {
+  ownership: 'full',
+  rights: 'complete',
+  transparency: true
+};
+
+export default client;`}</code>
               </pre>
               <div className="absolute bottom-2 right-2 text-green-500">
-                <Code className="w-4 h-4" />
+                <Terminal className="w-4 h-4" />
               </div>
             </div>
             
             {/* Australia map connection */}
-            <div className="absolute -bottom-8 -left-10 md:-left-20 w-40 h-40 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-3 overflow-hidden opacity-70 animate-float">
+            <div className="absolute -bottom-8 -left-10 md:-left-20 w-40 h-40 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-3 overflow-hidden opacity-90 animate-float z-10 border border-blue-100/50">
               <div className="relative h-full">
                 <div className="w-12 h-12 rounded-full bg-blue-600 absolute top-2 right-2 opacity-70 flex items-center justify-center text-white">
                   <span className="text-xs">AU</span>
@@ -146,6 +160,16 @@ export function HeroSection() {
                   <path d="M30,30 Q65,5 80,50" stroke="#5E3B8F" strokeWidth="1.5" strokeDasharray="3 3" />
                   <circle cx="30" cy="30" r="5" fill="#36B2B0" />
                   <circle cx="80" cy="50" r="5" fill="#5E3B8F" />
+                  <animateTransform 
+                    attributeName="transform"
+                    attributeType="XML"
+                    type="translate"
+                    from="0 0"
+                    to="0 3"
+                    dur="3s"
+                    repeatCount="indefinite"
+                    additive="sum"
+                  />
                 </svg>
                 <div className="absolute bottom-2 right-2 text-blue-500">
                   <Users className="w-4 h-4" />
@@ -153,77 +177,67 @@ export function HeroSection() {
               </div>
             </div>
             
-            {/* Main dashboard card with enhanced visuals */}
-            <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-xl shadow-2xl border border-gray-100 transform transition-all duration-1000 hover:shadow-blue-200/50 hover:scale-105">
+            {/* Main cost comparison visualization */}
+            <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-xl shadow-2xl border border-gray-100 transform transition-all duration-1000 hover:shadow-blue-200/50">
               <div className="absolute -right-3 -top-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                LIVE DEMO
+                COST COMPARISON
               </div>
               
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-semibold text-blue-800">Your Team Dashboard</h3>
+                <h3 className="text-xl font-semibold text-blue-800">Development Cost Analysis</h3>
                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full pulse"></span>
-                  Online
+                  Real-time
                 </span>
               </div>
               
-              <div className="space-y-4">
-                <div className="flex items-center p-3 bg-gradient-to-r from-blue-50 to-white rounded-lg hover:bg-blue-100/50 transition-all duration-300 shine border border-blue-100/50 shadow-sm">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-inner">JS</div>
-                  <div className="ml-3">
-                    <p className="font-medium">James Sullivan</p>
-                    <p className="text-sm text-gray-600">Senior Full-Stack Developer</p>
+              <div className="space-y-6">
+                <div className="relative pt-8 pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-medium">Local Development</span>
+                    <span className="text-lg font-bold">$100,000</span>
                   </div>
-                  <div className="ml-auto bg-green-100 w-2 h-2 rounded-full pulse"></div>
+                  <div className="w-full h-6 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-gray-500 w-full rounded-full"></div>
+                  </div>
+                  <div className="absolute top-0 right-0 bg-gray-500 text-white text-xs px-2 py-1 rounded-full">
+                    100%
+                  </div>
                 </div>
                 
-                <div className="flex items-center p-3 bg-gradient-to-r from-blue-50 to-white rounded-lg hover:bg-blue-100/50 transition-all duration-300 shine border border-blue-100/50 shadow-sm">
-                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-inner">AK</div>
-                  <div className="ml-3">
-                    <p className="font-medium">Aanya Kumar</p>
-                    <p className="text-sm text-gray-600">DevOps Engineer</p>
+                <div className="relative pt-8 pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-medium">Upstart Development</span>
+                    <span className="text-lg font-bold text-blue-600">$33,000</span>
                   </div>
-                  <div className="ml-auto bg-green-100 w-2 h-2 rounded-full pulse"></div>
+                  <div className="w-full h-6 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-blue-600 to-purple-600 w-[33%] rounded-full animate-pulse-subtle"></div>
+                  </div>
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs px-2 py-1 rounded-full animate-pulse-subtle">
+                    33%
+                  </div>
                 </div>
                 
-                <div className="flex items-center p-3 bg-gradient-to-r from-blue-50 to-white rounded-lg hover:bg-blue-100/50 transition-all duration-300 shine border border-blue-100/50 shadow-sm">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold shadow-inner">RL</div>
-                  <div className="ml-3">
-                    <p className="font-medium">Ryan Lee</p>
-                    <p className="text-sm text-gray-600">UI/UX Designer</p>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Your Savings:</span>
+                    <span className="text-xl font-bold text-green-600">$67,000</span>
                   </div>
-                  <div className="ml-auto bg-green-100 w-2 h-2 rounded-full pulse"></div>
+                  <div className="flex items-center mt-2">
+                    <div className="flex-1 h-2 bg-gradient-to-r from-blue-200 to-purple-200 rounded-full"></div>
+                    <div className="ml-2 text-sm font-bold text-purple-600">67%</div>
+                  </div>
                 </div>
               </div>
               
-              <div className="mt-6 grid grid-cols-2 gap-4 text-center">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                  <p className="text-sm text-gray-600">Avg. Response Time</p>
-                  <p className="text-xl font-bold text-blue-700">15 min</p>
-                </div>
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                  <p className="text-sm text-gray-600">Projects Delivered</p>
-                  <p className="text-xl font-bold text-purple-700">324+</p>
-                </div>
-              </div>
-              
-              <div className="mt-4 p-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg shadow-inner">
-                <p className="text-center text-sm">
-                  <span className="font-medium">Current AEST Time:</span>{" "}
-                  <span className="font-bold" id="aestTime">
-                    {new Date().toLocaleTimeString('en-AU', {
-                      timeZone: 'Australia/Sydney',
-                      hour: '2-digit',
-                      minute: '2-digit'
-                    })}
-                  </span>
-                </p>
-              </div>
-              
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-                <div className="animate-bounce flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-lg">
-                  <ArrowRight className="w-5 h-5 text-blue-600 rotate-90" />
-                </div>
+              <div className="mt-6 text-center">
+                <Button 
+                  size="sm" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-500 hover:to-blue-500 text-white shine"
+                  onClick={() => document.getElementById('savings')?.scrollIntoView({behavior: 'smooth'})}
+                >
+                  Calculate Your Specific Savings
+                </Button>
               </div>
             </div>
           </div>

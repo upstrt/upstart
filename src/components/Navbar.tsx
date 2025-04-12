@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X, Code, Zap } from "lucide-react";
+import { Menu, X, Zap, ExternalLink } from "lucide-react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ export function Navbar() {
   }, []);
   
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2" : "py-4"}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/10 backdrop-blur-lg border-b border-white/10 shadow-lg py-2" : "py-4"}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -38,8 +38,14 @@ export function Navbar() {
             <a href="#savings" className="text-sm font-medium hover:text-blue-600 transition-colors">Cost Savings</a>
             <a href="#case-studies" className="text-sm font-medium hover:text-blue-600 transition-colors">Case Studies</a>
             <a href="#team" className="text-sm font-medium hover:text-blue-600 transition-colors">Our Team</a>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white shine">
-              Contact Us
+            <Button 
+              size="sm" 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white relative overflow-hidden group shine"
+            >
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-20 group-hover:blur-lg transition-all duration-700"></span>
+              <span className="relative flex items-center gap-1 z-10">
+                Contact Us <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </span>
             </Button>
           </div>
           
@@ -58,8 +64,11 @@ export function Navbar() {
               <a href="#savings" className="text-sm font-medium hover:text-blue-600 transition-colors">Cost Savings</a>
               <a href="#case-studies" className="text-sm font-medium hover:text-blue-600 transition-colors">Case Studies</a>
               <a href="#team" className="text-sm font-medium hover:text-blue-600 transition-colors">Our Team</a>
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white shine">
-                Contact Us
+              <Button 
+                size="sm" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white shine"
+              >
+                Contact Us <ExternalLink className="w-3.5 h-3.5 ml-1" />
               </Button>
             </div>
           </div>

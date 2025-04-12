@@ -1,49 +1,72 @@
 
-import { Check, ArrowRight, Lightbulb, Users, Laptop, Presentation } from "lucide-react";
+import { Check, ArrowDown, Lock, Code, Users, MessageSquare, FileCode, Zap } from "lucide-react";
+import { useState } from "react";
 
 export function ProcessSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  
   const steps = [
     {
       number: "01",
       title: "Technical Consultation",
       description: "We start by understanding your business goals, technical requirements, and team structure to create the perfect integration plan.",
-      points: ["In-depth technical assessment", "Team structure planning", "Technology stack alignment"],
-      icon: <Lightbulb className="w-12 h-12 text-upstart-purple" />,
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-      benefit: "Save hours of planning and research with our expert consultation"
+      icon: <FileCode className="w-12 h-12 text-blue-600" />,
+      benefits: [
+        "In-depth technical assessment",
+        "Team structure planning",
+        "Technology stack alignment",
+        "Clear project roadmap"
+      ],
+      emphasis: "We document everything and share it with you for complete transparency."
     },
     {
       number: "02",
       title: "Team Assembly",
-      description: "We handpick senior developers with the exact skills your project needs, ensuring cultural and technical fit with your company.",
-      points: ["Skill-matched senior developers", "Cultural compatibility focus", "Australian business experience"],
-      icon: <Users className="w-12 h-12 text-upstart-purple" />,
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-      benefit: "Eliminate hiring risks with our pre-vetted senior talent pool"
+      description: "We handpick the perfect tech experts with the exact skills your project needs, ensuring cultural and technical fit with your company.",
+      icon: <Users className="w-12 h-12 text-purple-600" />,
+      benefits: [
+        "Skill-matched tech experts",
+        "Cultural compatibility focus", 
+        "Australian business experience",
+        "Seamless team integration"
+      ],
+      emphasis: "You interview and approve every team member before they start."
     },
     {
       number: "03",
-      title: "Integration & Onboarding",
-      description: "Your new team members are seamlessly integrated into your workflow, tools, and processes with minimal disruption.",
-      points: ["Workflow integration", "Communication protocols", "Development environment setup"],
-      icon: <Laptop className="w-12 h-12 text-upstart-purple" />,
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-      benefit: "Start collaborating in days, not months"
+      title: "Transparent Development",
+      description: "Your team delivers high-quality code with daily updates, always maintaining clear communication and complete code ownership.",
+      icon: <Code className="w-12 h-12 text-blue-600" />,
+      benefits: [
+        "100% code ownership for clients",
+        "Daily progress updates",
+        "Full access to repositories",
+        "Regular code reviews"
+      ],
+      emphasis: "You own ALL code produced, with complete IP rights and transparency."
     },
     {
       number: "04",
-      title: "Collaborative Delivery",
-      description: "Working as an extension of your team, we deliver high-quality code and maintain transparent communication throughout.",
-      points: ["Agile development methodology", "Regular progress updates", "Quality assurance built-in"],
-      icon: <Presentation className="w-12 h-12 text-upstart-purple" />,
-      image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-      benefit: "Experience development velocity that exceeds in-house teams"
-    }
+      title: "Collaboration & Communication",
+      description: "We work as an extension of your team with consistent communication channels and regular check-ins, delivering outstanding results.",
+      icon: <MessageSquare className="w-12 h-12 text-purple-600" />,
+      benefits: [
+        "Daily standups on your schedule",
+        "Shared project management tools",
+        "Australian timezone coverage",
+        "Direct access to developers"
+      ],
+      emphasis: "Clear, consistent communication ensures we function as your team, not just a provider."
+    },
   ];
   
   return (
-    <section id="process" className="py-16 md:py-24 bg-gradient-to-b from-white to-upstart-lightPurple/20">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="process" className="py-16 md:py-24 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
+      {/* Glass effect background blobs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-400/10 rounded-full filter blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16 fadeIn">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Our Integration Process</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
@@ -52,65 +75,231 @@ export function ProcessSection() {
           </p>
         </div>
         
-        <div className="space-y-16">
+        {/* Process steps navigation */}
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
           {steps.map((step, index) => (
-            <div 
-              key={index} 
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center fadeIn"
-              style={{ animationDelay: `${index * 0.15}s` }}
+            <button
+              key={index}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2
+                ${activeStep === index 
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-110' 
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                }`}
+              onClick={() => setActiveStep(index)}
             >
-              <div className="md:col-span-5 order-2 md:order-1">
-                <div className="p-6 md:p-8 bg-white rounded-xl shadow-md border border-gray-100">
-                  <div className="flex items-center mb-6">
-                    <div className="bg-upstart-lightPurple rounded-full p-3 mr-4 step-number">
-                      <span className="text-xl font-bold text-upstart-purple">{step.number}</span>
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs 
+                ${activeStep === index ? 'bg-white text-blue-700' : 'bg-blue-100 text-blue-700'}`}>
+                {step.number}
+              </div>
+              {step.title}
+            </button>
+          ))}
+        </div>
+        
+        {/* Active step content */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mt-10">
+          <div className="md:col-span-5 order-2 md:order-1">
+            <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-blue-100/20 p-6 md:p-8 transform transition-all duration-500">
+              <div className="flex items-center mb-6">
+                <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-full p-3 mr-4 step-number">
+                  <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{steps[activeStep].number}</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-semibold">{steps[activeStep].title}</h3>
+              </div>
+              
+              <div className="mb-6 text-blue-600">
+                {steps[activeStep].icon}
+              </div>
+              
+              <p className="text-gray-700 mb-6">{steps[activeStep].description}</p>
+              
+              <div className="space-y-3 mb-6">
+                {steps[activeStep].benefits.map((point, pointIndex) => (
+                  <div key={pointIndex} className="flex items-center">
+                    <div className="bg-gradient-to-r from-blue-200 to-purple-200 rounded-full p-1 mr-3">
+                      <Check className="w-4 h-4 text-purple-700" />
                     </div>
-                    <h3 className="text-xl md:text-2xl font-semibold">{step.title}</h3>
+                    <span>{point}</span>
                   </div>
-                  
-                  <div className="mb-6">
-                    {step.icon}
+                ))}
+              </div>
+              
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-blue-100/50">
+                <div className="flex items-start">
+                  <div className="mr-2 mt-1">
+                    <Lock className="w-4 h-4 text-blue-600" />
                   </div>
-                  
-                  <p className="text-gray-700 mb-6">{step.description}</p>
-                  
-                  <div className="space-y-3 mb-6">
-                    {step.points.map((point, pointIndex) => (
-                      <div key={pointIndex} className="flex items-center">
-                        <div className="bg-upstart-lightPurple rounded-full p-1 mr-3">
-                          <Check className="w-4 h-4 text-upstart-purple" />
-                        </div>
-                        <span>{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-upstart-lightBlue to-upstart-lightPurple p-4 rounded-lg">
-                    <p className="text-upstart-blue font-medium">
-                      <strong>Key Benefit:</strong> {step.benefit}
-                    </p>
-                  </div>
+                  <p className="text-blue-800 font-medium">
+                    <strong>Key Promise:</strong> {steps[activeStep].emphasis}
+                  </p>
                 </div>
               </div>
               
-              <div className="md:col-span-2 flex justify-center order-1 md:order-2 hidden md:flex">
-                {index < steps.length - 1 ? (
-                  <div className="h-full flex items-center">
-                    <ArrowRight className="w-10 h-10 text-upstart-purple transform rotate-90 md:rotate-0" />
-                  </div>
-                ) : (
-                  <div className="h-full flex items-center">
-                    <div className="w-10 h-10 bg-upstart-gold rounded-full flex items-center justify-center">
-                      <Check className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div className="md:col-span-5 order-3">
-                <div className="blob h-64 md:h-80 w-full" style={{ backgroundImage: `url(${step.image})` }}></div>
+              {activeStep < steps.length - 1 && (
+                <div className="mt-6 text-center">
+                  <button 
+                    onClick={() => setActiveStep(prev => Math.min(prev + 1, steps.length - 1))}
+                    className="inline-flex items-center justify-center text-sm text-blue-600 hover:text-purple-600 transition-colors"
+                  >
+                    Next Step
+                    <ArrowDown className="w-4 h-4 ml-1 transform rotate-90" />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="md:col-span-2 flex justify-center order-1 md:order-2">
+            {/* Vertical progress line */}
+            <div className="hidden md:flex flex-col items-center h-full">
+              <div className="h-full w-1 bg-gradient-to-b from-blue-300 to-purple-300 rounded-full relative">
+                {/* Animated dot */}
+                <div 
+                  className="absolute w-4 h-4 bg-white rounded-full border-2 border-blue-500 shadow-lg left-1/2 transform -translate-x-1/2"
+                  style={{ top: `${(activeStep / (steps.length - 1)) * 100}%` }}
+                >
+                  <div className="absolute w-full h-full rounded-full bg-blue-500 animate-ping opacity-75"></div>
+                </div>
               </div>
             </div>
+          </div>
+          
+          <div className="md:col-span-5 order-3">
+            <div className="p-6 bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-blue-100/20">
+              {/* Active step visualization */}
+              {activeStep === 0 && (
+                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <div className="bg-white p-8 rounded-xl shadow-lg w-10/12 transform transition-all duration-300 hover:scale-105">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="font-bold text-blue-800">Project Blueprint</h4>
+                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Shared with you</span>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="h-3 bg-gray-200 rounded-full w-full"></div>
+                        <div className="h-3 bg-gray-200 rounded-full w-3/4"></div>
+                        <div className="h-3 bg-gray-200 rounded-full w-5/6"></div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
+                        <div className="text-sm text-gray-500">Updated: Today</div>
+                        <div className="flex items-center">
+                          <FileCode className="w-4 h-4 text-blue-600 mr-1" />
+                          <span className="text-sm text-blue-600">100% Transparent</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {activeStep === 1 && (
+                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <div className="grid grid-cols-3 gap-2 w-10/12">
+                      {[1, 2, 3].map((num) => (
+                        <div key={num} className="bg-white rounded-lg p-3 shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                          <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-3 flex items-center justify-center text-white">
+                            {['JS', 'AK', 'RL'][num-1]}
+                          </div>
+                          <div className="text-xs text-center">
+                            <p className="font-medium text-gray-900">{['James S.', 'Aanya K.', 'Ryan L.'][num-1]}</p>
+                            <p className="text-gray-600">{['Frontend', 'Backend', 'DevOps'][num-1]}</p>
+                          </div>
+                        </div>
+                      ))}
+                      <div className="col-span-3 text-center mt-2 text-sm text-blue-600 font-medium">
+                        You interview and approve each member
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {activeStep === 2 && (
+                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <div className="w-10/12 bg-white rounded-lg shadow-lg p-4 font-mono text-sm overflow-hidden">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center">
+                          <Code className="w-5 h-5 text-blue-600 mr-2" />
+                          <span className="font-medium">repository / main</span>
+                        </div>
+                        <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">You have full access</span>
+                      </div>
+                      <div className="bg-gray-100 p-3 rounded-md overflow-hidden">
+                        <div className="flex">
+                          <span className="text-gray-500 mr-2">1</span>
+                          <span className="text-blue-600">const</span>
+                          <span className="text-black mx-1">ownership</span>
+                          <span className="text-blue-600 mr-1">=</span>
+                          <span className="text-green-600">'belongs_to_client'</span>
+                        </div>
+                        <div className="flex">
+                          <span className="text-gray-500 mr-2">2</span>
+                          <span className="text-blue-600">const</span>
+                          <span className="text-black mx-1">rights</span>
+                          <span className="text-blue-600 mr-1">=</span>
+                          <span className="text-green-600">'full_ip_ownership'</span>
+                        </div>
+                        <div className="flex">
+                          <span className="text-gray-500 mr-2">3</span>
+                          <span className="text-blue-600">const</span>
+                          <span className="text-black mx-1">transparency</span>
+                          <span className="text-blue-600 mr-1">=</span>
+                          <span className="text-purple-600">true</span>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-gray-500">
+                        Last commit: 5 minutes ago • Daily updates • 100% ownership
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {activeStep === 3 && (
+                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <div className="w-10/12 bg-white rounded-lg shadow-lg p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="font-bold text-blue-800">Daily Communication</h4>
+                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">AU Timezone</span>
+                      </div>
+                      <div className="space-y-2">
+                        {['9:00 AM: Standup Meeting', '10:30 AM: Sprint Planning', '2:00 PM: Code Review', '4:30 PM: Progress Update'].map((item, i) => (
+                          <div key={i} className="flex items-center p-2 bg-gray-50 rounded-md">
+                            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                            <span className="text-sm">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 text-center text-sm">
+                        <div className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 px-3 py-1 rounded-full">
+                          <Zap className="w-4 h-4 text-yellow-500 mr-1" />
+                          <span className="text-blue-700">Always in sync with your team</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        {/* Progress dots (mobile only) */}
+        <div className="flex justify-center space-x-2 mt-8 md:hidden">
+          {steps.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveStep(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeStep === index 
+                  ? 'bg-blue-600 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Go to step ${index + 1}`}
+            />
           ))}
         </div>
       </div>
