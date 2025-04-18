@@ -6,33 +6,23 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    /* Updated colors to match screenshot with blues and purples */
-    --primary: 225 52% 40%; /* Blue */
+    --primary: 211 100% 40%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 265 52% 40%; /* Purple */
+    --secondary: 28 100% 60%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 44 88% 63%; /* Gold */
+    --accent: 210 100% 40%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --ring: 211 100% 40%;
     --radius: 0.5rem;
   }
 }
@@ -51,17 +41,12 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-upxtend-primary to-upxtend-secondary bg-clip-text text-transparent;
   }
   
   /* New gradient text for hero section */
   .gradient-text-hero {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-blue-500 bg-clip-text text-transparent;
-  }
-  
-  /* Updated hero gradient to match screenshot */
-  .hero-gradient {
-    background: linear-gradient(135deg, rgba(255, 255, 150, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+    @apply bg-gradient-to-r from-upxtend-primary via-upxtend-dark to-upxtend-primary bg-clip-text text-transparent;
   }
   
   .australia-connection {
