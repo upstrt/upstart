@@ -1,70 +1,90 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar, Users, Check } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 export function ConnectSection() {
+  const { toast } = useToast();
+  
+  const handleBookConsultation = () => {
+    toast({
+      title: "Booking Consultation",
+      description: "Redirecting to our consultation scheduling page",
+    });
+  };
+  
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-upstart-purple to-upstart-blue text-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="connect" className="py-16 md:py-24 bg-upxtend-primary text-white relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/10 rounded-full mix-blend-overlay filter blur-3xl"></div>
+        <div className="absolute top-40 right-10 w-60 h-60 bg-blue-600/10 rounded-full mix-blend-overlay filter blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to reduce development costs by up to 65%?</h2>
+          <div className="text-center lg:text-left" data-aos="fade-right">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to extend your tech team?</h2>
             <p className="text-xl mb-8">
-              Partner with Upstart and get a senior offshore development team that feels like an extension of your business—at a fraction of the cost.
+              Partner with Upxtend and get a senior offshore development team that integrates seamlessly with your business—just like having your own in-house team.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-upstart-purple hover:bg-upstart-gold hover:text-upstart-blue">
-                Calculate Your Savings
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Schedule Consultation
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link to="/process">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-upxtend-primary hover:bg-blue-50 group transition-all"
+                  onClick={handleBookConsultation}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule Consultation
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/calculator">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  Calculate Your Team Cost
+                </Button>
+              </Link>
             </div>
           </div>
           
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end" data-aos="fade-left">
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl max-w-md">
-              <h3 className="text-xl font-semibold mb-4">Our Guarantee</h3>
-              <p className="mb-4">
-                If you're not completely satisfied with our team's performance in the first 2 weeks,
-                we'll provide a full refund—no questions asked.
-              </p>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-white/20 p-2 rounded-full">
+                  <Users className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-semibold">Our Team Extension Promise</h3>
+              </div>
               
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="bg-white/20 rounded-full p-1 mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                  <div className="bg-white/20 rounded-full p-1 mr-2 mt-1">
+                    <Check className="w-4 h-4" />
                   </div>
-                  <span>Risk-free trial period with money-back guarantee</span>
+                  <span>Risk-free 2-week trial with full money-back guarantee</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-white/20 rounded-full p-1 mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                  <div className="bg-white/20 rounded-full p-1 mr-2 mt-1">
+                    <Check className="w-4 h-4" />
                   </div>
-                  <span>No long-term contracts—monthly agreements with 30-day notice</span>
+                  <span>Flexible monthly agreements with 30-day notice period</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-white/20 rounded-full p-1 mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                  <div className="bg-white/20 rounded-full p-1 mr-2 mt-1">
+                    <Check className="w-4 h-4" />
                   </div>
-                  <span>Transparent pricing with no hidden fees</span>
+                  <span>Dedicated team working in your timezone</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="bg-white/20 rounded-full p-1 mr-2 mt-1">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <span>Daily communication and collaboration</span>
                 </div>
               </div>
-              
-              <Button 
-                variant="link" 
-                className="text-white hover:text-upstart-gold mt-4 p-0 flex items-center"
-              >
-                Learn More
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
             </div>
           </div>
         </div>

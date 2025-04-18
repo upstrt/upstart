@@ -1,9 +1,14 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Calendar, CheckCircle, Building } from "lucide-react";
+import { ArrowRight, Users, Calendar, CheckCircle, Building, MessageCircle, GitMerge } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export function CaseStudies() {
+  const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState("all");
+  
   const ongoingPartnerships = [
     {
       client: "TechMate Sydney",
@@ -13,7 +18,8 @@ export function CaseStudies() {
       duration: "Since 2021",
       services: ["Payment Processing System", "Customer Dashboard", "Mobile App Integration"],
       quote: "Upxtend has become an integral part of our tech department. They understand our business goals and deliver exceptional solutions that drive our growth.",
-      author: "Sarah Johnson, CTO"
+      author: "Sarah Johnson, CTO",
+      category: "fintech"
     },
     {
       client: "GreenGrow Melbourne",
@@ -23,7 +29,8 @@ export function CaseStudies() {
       duration: "Since 2022",
       services: ["IoT Platform", "Data Analytics", "Mobile App Development"],
       quote: "Having Upxtend as our extended team gives us the technical expertise we need without the overhead of hiring locally. They're truly part of our company.",
-      author: "Michael Chen, CEO"
+      author: "Michael Chen, CEO",
+      category: "agriculture"
     },
     {
       client: "MediTrack Brisbane",
@@ -33,24 +40,69 @@ export function CaseStudies() {
       duration: "Since 2020",
       services: ["Patient Management System", "Telehealth Platform", "Compliance Solutions"],
       quote: "Our Upxtend team consistently delivers high-quality work while adhering to strict healthcare regulations. They've become essential to our development process.",
-      author: "Dr. Emma Wilson, Founder"
+      author: "Dr. Emma Wilson, Founder",
+      category: "healthcare"
     }
   ];
   
+  const handleViewDetails = (client) => {
+    toast({
+      title: "Viewing Partnership Details",
+      description: `Navigating to ${client}'s ongoing partnership details`,
+    });
+  };
+  
   return (
-    <section id="case-studies" className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
+    <section id="case-studies" className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent z-10"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-20">
+        <div className="text-center mb-16 reveal-from-bottom" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ongoing Client Partnerships</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            We don't just complete projects—we build long-term relationships. Meet some of the Australian businesses 
-            that rely on Upxtend as their extended tech department.
+            We don't just complete projects—we become your extended tech department. Meet some of the Australian businesses 
+            that rely on Upxtend as their in-house tech team.
           </p>
+          
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button 
+              variant={activeTab === "all" ? "default" : "outline"} 
+              onClick={() => setActiveTab("all")}
+              className="bg-upxtend-primary text-white hover:bg-upxtend-dark"
+            >
+              All Partnerships
+            </Button>
+            <Button 
+              variant={activeTab === "fintech" ? "default" : "outline"} 
+              onClick={() => setActiveTab("fintech")}
+            >
+              FinTech
+            </Button>
+            <Button 
+              variant={activeTab === "healthcare" ? "default" : "outline"}
+              onClick={() => setActiveTab("healthcare")} 
+            >
+              Healthcare
+            </Button>
+            <Button 
+              variant={activeTab === "agriculture" ? "default" : "outline"} 
+              onClick={() => setActiveTab("agriculture")}
+            >
+              Agriculture
+            </Button>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ongoingPartnerships.map((partnership, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col">
+          {ongoingPartnerships
+            .filter(partnership => activeTab === "all" || partnership.category === activeTab)
+            .map((partnership, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay={`${index * 100}`}
+            >
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex justify-between items-center mb-4">
                   <span className="bg-upxtend-light px-2 py-1 rounded text-xs font-medium text-upxtend-primary">{partnership.industry}</span>
@@ -70,10 +122,18 @@ export function CaseStudies() {
                     <Calendar className="w-4 h-4 text-upxtend-primary mr-2" />
                     <span className="text-sm">{partnership.duration}</span>
                   </div>
+                  <div className="flex items-center">
+                    <MessageCircle className="w-4 h-4 text-upxtend-primary mr-2" />
+                    <span className="text-sm">Daily Team Communication</span>
+                  </div>
+                  <div className="flex items-center">
+                    <GitMerge className="w-4 h-4 text-upxtend-primary mr-2" />
+                    <span className="text-sm">Continuous Integration</span>
+                  </div>
                 </div>
                 
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold mb-2">Services Provided:</h4>
+                  <h4 className="text-sm font-semibold mb-2">Current Ongoing Work:</h4>
                   <div className="space-y-2">
                     {partnership.services.map((service, idx) => (
                       <div key={idx} className="flex items-center">
@@ -97,9 +157,9 @@ export function CaseStudies() {
                   <Building className="w-4 h-4 text-upxtend-primary mr-1" />
                   <span className="text-sm font-medium">Ongoing Partnership</span>
                 </div>
-                <Link to={`/case-studies/${partnership.client.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Link to={`/case-studies/${partnership.client.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => handleViewDetails(partnership.client)}>
                   <Button variant="ghost" size="sm" className="text-upxtend-primary hover:bg-upxtend-light/50">
-                    <span className="text-sm">Read More</span>
+                    <span className="text-sm">View Partnership</span>
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
@@ -108,11 +168,11 @@ export function CaseStudies() {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center" data-aos="fade-up">
           <Link to="/case-studies">
-            <Button className="bg-upxtend-primary hover:bg-upxtend-dark text-white flex items-center gap-2 mx-auto">
+            <Button className="bg-upxtend-primary hover:bg-upxtend-dark text-white flex items-center gap-2 mx-auto group transition-all duration-300 transform hover:scale-105">
               View All Partnerships
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
