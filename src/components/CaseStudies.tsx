@@ -19,7 +19,12 @@ export function CaseStudies() {
       services: ["Payment Processing System", "Customer Dashboard", "Mobile App Integration"],
       quote: "Upxtend has become an integral part of our tech department. They understand our business goals and deliver exceptional solutions that drive our growth.",
       author: "Sarah Johnson, CTO",
-      category: "fintech"
+      category: "fintech",
+      specialFeatures: [
+        "Daily standups with Sydney team",
+        "Integration with Australian banking APIs",
+        "Compliance with local financial regulations"
+      ]
     },
     {
       client: "GreenGrow Melbourne",
@@ -30,7 +35,12 @@ export function CaseStudies() {
       services: ["IoT Platform", "Data Analytics", "Mobile App Development"],
       quote: "Having Upxtend as our extended team gives us the technical expertise we need without the overhead of hiring locally. They're truly part of our company.",
       author: "Michael Chen, CEO",
-      category: "agriculture"
+      category: "agriculture",
+      specialFeatures: [
+        "Field testing support with local farmers",
+        "Integration with Australian weather services",
+        "Rural connectivity solutions"
+      ]
     },
     {
       client: "MediTrack Brisbane",
@@ -41,11 +51,16 @@ export function CaseStudies() {
       services: ["Patient Management System", "Telehealth Platform", "Compliance Solutions"],
       quote: "Our Upxtend team consistently delivers high-quality work while adhering to strict healthcare regulations. They've become essential to our development process.",
       author: "Dr. Emma Wilson, Founder",
-      category: "healthcare"
+      category: "healthcare",
+      specialFeatures: [
+        "HIPAA and Australian privacy compliance",
+        "Integration with Medicare systems",
+        "Local healthcare regulations expertise"
+      ]
     }
   ];
   
-  const handleViewDetails = (client) => {
+  const handleViewDetails = (client: string) => {
     toast({
       title: "Viewing Partnership Details",
       description: `Navigating to ${client}'s ongoing partnership details`,
@@ -57,36 +72,39 @@ export function CaseStudies() {
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent z-10"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-20">
-        <div className="text-center mb-16 reveal-from-bottom" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ongoing Client Partnerships</h2>
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ongoing Team Extensions</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             We don't just complete projects—we become your extended tech department. Meet some of the Australian businesses 
-            that rely on Upxtend as their in-house tech team.
+            that rely on Upxtend as their in-house tech team every day.
           </p>
           
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button 
               variant={activeTab === "all" ? "default" : "outline"} 
               onClick={() => setActiveTab("all")}
-              className="bg-upxtend-primary text-white hover:bg-upxtend-dark"
+              className={activeTab === "all" ? "bg-upxtend-primary text-white hover:bg-upxtend-dark" : ""}
             >
               All Partnerships
             </Button>
             <Button 
               variant={activeTab === "fintech" ? "default" : "outline"} 
               onClick={() => setActiveTab("fintech")}
+              className={activeTab === "fintech" ? "bg-upxtend-primary text-white hover:bg-upxtend-dark" : ""}
             >
               FinTech
             </Button>
             <Button 
               variant={activeTab === "healthcare" ? "default" : "outline"}
-              onClick={() => setActiveTab("healthcare")} 
+              onClick={() => setActiveTab("healthcare")}
+              className={activeTab === "healthcare" ? "bg-upxtend-primary text-white hover:bg-upxtend-dark" : ""}
             >
               Healthcare
             </Button>
             <Button 
               variant={activeTab === "agriculture" ? "default" : "outline"} 
               onClick={() => setActiveTab("agriculture")}
+              className={activeTab === "agriculture" ? "bg-upxtend-primary text-white hover:bg-upxtend-dark" : ""}
             >
               Agriculture
             </Button>
@@ -146,6 +164,22 @@ export function CaseStudies() {
                   </div>
                 </div>
                 
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold mb-2 flex items-center">
+                    <div className="bg-upxtend-light rounded-full p-1 mr-2">
+                      <Users className="w-3 h-3 text-upxtend-primary" />
+                    </div>
+                    Australian Business Integration:
+                  </h4>
+                  <div className="pl-6 space-y-1">
+                    {partnership.specialFeatures.map((feature, idx) => (
+                      <div key={idx} className="flex items-start text-xs">
+                        <span>• {feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
                 <blockquote className="italic text-gray-600 text-sm border-l-4 border-upxtend-primary pl-4 mt-4 mb-2 flex-grow">
                   "{partnership.quote}"
                 </blockquote>
@@ -171,7 +205,7 @@ export function CaseStudies() {
         <div className="mt-12 text-center" data-aos="fade-up">
           <Link to="/case-studies">
             <Button className="bg-upxtend-primary hover:bg-upxtend-dark text-white flex items-center gap-2 mx-auto group transition-all duration-300 transform hover:scale-105">
-              View All Partnerships
+              View All Team Extensions
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>

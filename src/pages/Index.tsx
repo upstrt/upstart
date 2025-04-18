@@ -72,6 +72,17 @@ const Index = () => {
           if (id) {
             // Update URL without reloading page
             history.replaceState(null, '', `#${id}`);
+            
+            // Add toast notification when scrolling to a new section
+            if (id !== 'home' && !section.classList.contains('toast-shown')) {
+              section.classList.add('toast-shown');
+              const sectionName = id.charAt(0).toUpperCase() + id.slice(1);
+              toast({
+                title: `Exploring ${sectionName}`,
+                description: `Learn how our team becomes your team`,
+                duration: 3000,
+              });
+            }
           }
         }
       });
@@ -92,6 +103,14 @@ const Index = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      
+      // Show toast when clicking navigation
+      const sectionName = id.charAt(0).toUpperCase() + id.slice(1);
+      toast({
+        title: `Navigating to ${sectionName}`,
+        description: `Learn more about this aspect of our service`,
+        duration: 2000,
+      });
     }
   };
   

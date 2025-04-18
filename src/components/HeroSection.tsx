@@ -9,33 +9,47 @@ export function HeroSection() {
   const { toast } = useToast();
   const [isVisible, setIsVisible] = useState(false);
   const [currentMessage, setCurrentMessage] = useState(0);
+  const [showAnimation, setShowAnimation] = useState(false);
   
   const teamMessages = [
-    { sender: "YOU", message: "How's the new feature implementation coming along?" },
+    { sender: "FOUNDER", message: "How's the new feature implementation coming along?" },
     { sender: "DEV", message: "Just pushed the latest commits. All tests passing!" },
     { sender: "PM", message: "Great! Let's review it in today's standup." },
     { sender: "QA", message: "I'll start testing it right after the standup." }
   ];
 
+  const workingHours = [
+    { location: "Sydney", time: "9:00 AM - 5:00 PM AEST" },
+    { location: "Melbourne", time: "9:00 AM - 5:00 PM AEST" },
+    { location: "Brisbane", time: "9:00 AM - 5:00 PM AEST" },
+    { location: "Perth", time: "9:00 AM - 5:00 PM AWST" }
+  ];
+
   useEffect(() => {
     setIsVisible(true);
     
+    // Start the message rotation
     const messageInterval = setInterval(() => {
       setCurrentMessage(prev => (prev + 1) % teamMessages.length);
     }, 3500);
+    
+    // Trigger animation sequence after a short delay
+    setTimeout(() => {
+      setShowAnimation(true);
+    }, 800);
     
     return () => clearInterval(messageInterval);
   }, []);
   
   const handleConsultation = () => {
     toast({
-      title: "Booking Consultation",
-      description: "Redirecting to our consultation scheduling page",
+      title: "Free Consultation",
+      description: "Opening consultation scheduler...",
     });
   };
   
   return (
-    <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden hero-gradient">
       <div className="absolute inset-0 bg-gradient-to-br from-white via-upxtend-light/10 to-white/80 opacity-70"></div>
       
       {/* Animated background elements */}
@@ -64,15 +78,15 @@ export function HeroSection() {
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
-              Access your own dedicated tech team with senior developers who integrate seamlessly with your business.
-              Regular standups, sprint planning, and real-time collaboration—just like having your own in-house team.
+              We integrate seamlessly with your business, just like an in-house team. Same daily standups, 
+              sprint planning, and real-time collaboration – aligned with <span className="text-upxtend-primary font-medium">Australian business hours</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/process">
                 <Button 
                   size="lg" 
-                  className="bg-upxtend-primary hover:bg-upxtend-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group"
+                  className="bg-upxtend-primary hover:bg-upxtend-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group animate-pulse-subtle"
                   onClick={handleConsultation}
                 >
                   <Calendar className="w-5 h-5" />
@@ -95,9 +109,9 @@ export function HeroSection() {
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
               {[
+                { icon: Clock, text: "Aligned with Australian Business Hours" },
+                { icon: Globe, text: "Australian Culture Fit" },
                 { icon: Shield, text: "Risk-Free Trial Period" },
-                { icon: Code, text: "100% Code Ownership" },
-                { icon: Clock, text: "Aligned Working Hours" },
               ].map((item, index) => (
                 <div 
                   key={index} 
@@ -114,9 +128,9 @@ export function HeroSection() {
             </div>
           </div>
           
-          <div className="relative hidden lg:block">
-            {/* Team collaboration visualization */}
-            <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-100 transform transition-all duration-700 hover:shadow-2xl">
+          <div className={`relative hidden lg:block transform transition-all duration-1000 ${showAnimation ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            {/* Team collaboration visualization with enhanced animations */}
+            <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-100 transition-all duration-700 hover:shadow-2xl">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-bold text-gray-900">Your Daily Collaboration</h3>
                 <div className="bg-upxtend-light/50 p-2 rounded-full">
@@ -127,20 +141,20 @@ export function HeroSection() {
               {/* Daily workflow visualization */}
               <div className="mb-6 space-y-4">
                 <div className="grid grid-cols-4 gap-2 text-center text-xs font-medium mb-2">
-                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary">
-                    <Clock className="w-4 h-4 mx-auto mb-1" />
+                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary hover:bg-upxtend-light transition-all">
+                    <Video className={`w-4 h-4 mx-auto mb-1 ${showAnimation ? 'animate-bounce-slow' : ''}`} />
                     Daily Standup
                   </div>
-                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary">
-                    <GitPullRequest className="w-4 h-4 mx-auto mb-1" />
+                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary hover:bg-upxtend-light transition-all">
+                    <GitPullRequest className={`w-4 h-4 mx-auto mb-1 ${showAnimation ? 'animate-pulse' : ''}`} />
                     Code Review
                   </div>
-                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary">
-                    <CheckCircle className="w-4 h-4 mx-auto mb-1" />
+                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary hover:bg-upxtend-light transition-all">
+                    <CheckCircle className={`w-4 h-4 mx-auto mb-1 ${showAnimation ? 'animate-pulse' : ''}`} />
                     QA Testing
                   </div>
-                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary">
-                    <GitMerge className="w-4 h-4 mx-auto mb-1" />
+                  <div className="bg-upxtend-light/30 p-2 rounded-md text-upxtend-primary hover:bg-upxtend-light transition-all">
+                    <GitMerge className={`w-4 h-4 mx-auto mb-1 ${showAnimation ? 'animate-pulse' : ''}`} />
                     Deployment
                   </div>
                 </div>
@@ -148,13 +162,15 @@ export function HeroSection() {
                 {/* Active collaboration visual */}
                 <div className="relative">
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold relative">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center text-white font-bold relative shadow-glow-blue">
                       YOU
                       <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></span>
                     </div>
                     
-                    <svg className="w-20 h-6" viewBox="0 0 100 20">
-                      <path d="M0,10 H100" stroke="#0066cc" strokeWidth="2" strokeDasharray="5,5" />
+                    <svg className="w-20 h-6 animate-pulse-subtle" viewBox="0 0 100 20">
+                      <path d="M0,10 H100" stroke="#0066cc" strokeWidth="2" strokeDasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+                      </path>
                       <path d="M90,5 L100,10 L90,15" fill="none" stroke="#0066cc" strokeWidth="2" />
                     </svg>
                     
@@ -182,21 +198,21 @@ export function HeroSection() {
                         return (
                           <div 
                             key={idx} 
-                            className={`flex items-start ${msg.sender === "YOU" ? "" : "justify-end"} ${isActive ? "opacity-100" : "opacity-50"} transition-opacity duration-300`}
+                            className={`flex items-start ${msg.sender === "FOUNDER" ? "" : "justify-end"} ${isActive ? "opacity-100" : "opacity-50"} transition-opacity duration-300`}
                           >
-                            {msg.sender === "YOU" && (
-                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-medium mr-2 shrink-0">
-                                YOU
+                            {msg.sender === "FOUNDER" && (
+                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center text-white text-xs font-medium mr-2 shrink-0">
+                                <span className="text-[10px]">{msg.sender}</span>
                               </div>
                             )}
                             
-                            <div className={`${msg.sender === "YOU" ? "bg-white rounded-tr-lg rounded-br-lg rounded-bl-lg" : "bg-upxtend-primary text-white rounded-tl-lg rounded-bl-lg rounded-br-lg"} p-2 shadow-sm text-sm max-w-[80%] ${isActive ? "animate-pulse-subtle" : ""}`}>
+                            <div className={`${msg.sender === "FOUNDER" ? "bg-white rounded-tr-lg rounded-br-lg rounded-bl-lg" : "bg-upxtend-primary text-white rounded-tl-lg rounded-bl-lg rounded-br-lg"} p-2 shadow-sm text-sm max-w-[80%] ${isActive ? "animate-pulse-subtle" : ""}`}>
                               {msg.message}
                             </div>
                             
-                            {msg.sender !== "YOU" && (
+                            {msg.sender !== "FOUNDER" && (
                               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-upxtend-primary to-blue-500 flex items-center justify-center text-white text-xs font-medium ml-2 shrink-0">
-                                {msg.sender}
+                                <span className="text-[10px]">{msg.sender}</span>
                               </div>
                             )}
                           </div>
@@ -216,7 +232,7 @@ export function HeroSection() {
                       <p className="text-xs text-gray-500">Start your day with team alignment</p>
                     </div>
                   </div>
-                  <div className="bg-green-100 px-2 py-1 rounded text-green-800 text-xs font-medium">10:00 AM Daily</div>
+                  <div className="bg-green-100 px-2 py-1 rounded text-green-800 text-xs font-medium">10:00 AM AEST</div>
                 </div>
                 
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -232,10 +248,18 @@ export function HeroSection() {
                 
                 <div className="flex items-center justify-between p-3 bg-upxtend-primary/10 rounded-lg border border-upxtend-primary/20">
                   <div className="flex items-center">
-                    <Shield className="w-5 h-5 text-upxtend-primary mr-3" />
-                    <p className="font-medium text-upxtend-primary">Risk-Free Trial Available</p>
+                    <Clock className="w-5 h-5 text-upxtend-primary mr-3" />
+                    <div>
+                      <p className="font-medium text-upxtend-primary">Australian Business Hours</p>
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 mt-1">
+                        {workingHours.map((city, idx) => (
+                          <p key={idx} className="text-xs text-gray-600">
+                            {city.location}: <span className="text-upxtend-primary">{city.time}</span>
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-upxtend-primary" />
                 </div>
               </div>
             </div>
