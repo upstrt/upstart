@@ -41,14 +41,16 @@ export function HeroSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-upxtend-primary hover:bg-upxtend-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group"
-              >
-                <Calendar className="w-5 h-5" />
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/process">
+                <Button 
+                  size="lg" 
+                  className="bg-upxtend-primary hover:bg-upxtend-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book Free Consultation
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               
               <Link to="/expertise">
                 <Button 
@@ -79,58 +81,98 @@ export function HeroSection() {
           <div className="relative hidden lg:block">
             {/* Abstract visualization */}
             <div className="absolute -top-20 -right-20 w-72 h-72 bg-upxtend-light rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float-slow"></div>
-            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-upxtend-secondary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-200/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
             
-            {/* Team visualization */}
+            {/* Team collaboration visualization */}
             <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-100">
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Your Global Team</h3>
-                    <p className="text-sm text-gray-500">Seamlessly integrated with your business</p>
-                  </div>
-                  <Globe className="w-8 h-8 text-upxtend-primary" />
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900">Your Collaborative Team</h3>
+                <div className="bg-upxtend-light/50 p-2 rounded-full">
+                  <Users className="w-6 h-6 text-upxtend-primary" />
                 </div>
-                
+              </div>
+              
+              <div className="space-y-4 mb-6">
+                {/* Active collaboration visual */}
                 <div className="relative">
-                  <div className="flex -space-x-4 mb-4">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <div key={i} className="w-12 h-12 rounded-full bg-gradient-to-br from-upxtend-primary to-upxtend-secondary flex items-center justify-center text-white font-semibold text-sm border-2 border-white">
-                        {['PM', 'FE', 'BE', 'UI', 'QA'][i-1]}
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold relative">
+                      YOU
+                      <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></span>
+                    </div>
+                    
+                    <svg className="w-20 h-6" viewBox="0 0 100 20">
+                      <path d="M0,10 H100" stroke="#0066cc" strokeWidth="2" strokeDasharray="5,5" />
+                      <path d="M90,5 L100,10 L90,15" fill="none" stroke="#0066cc" strokeWidth="2" />
+                    </svg>
+                    
+                    <div className="flex -space-x-3">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-upxtend-primary to-blue-500 flex items-center justify-center text-white font-medium text-sm border-2 border-white relative z-30">
+                        PM
+                        <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
                       </div>
-                    ))}
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      { label: "Dedicated Team Members", value: "5-10", icon: Users },
-                      { label: "Global Talent Access", value: "Unlimited", icon: Globe },
-                      { label: "Tech Stacks", value: "20+", icon: Code },
-                    ].map((item, index) => (
-                      <div key={index} className="bg-upxtend-light/50 p-3 rounded-lg">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 bg-upxtend-primary/10 rounded-md">
-                              <item.icon className="w-5 h-5 text-upxtend-primary" />
-                            </div>
-                            <span className="font-medium text-gray-700">{item.label}</span>
-                          </div>
-                          <span className="text-lg font-semibold text-upxtend-primary">{item.value}</span>
-                        </div>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-upxtend-primary to-blue-500 flex items-center justify-center text-white font-medium text-sm border-2 border-white relative z-20">
+                        DEV
+                        <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
                       </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-6 p-4 bg-upxtend-light rounded-lg border border-upxtend-primary/20">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-white rounded-full">
-                        <Clock className="w-5 h-5 text-upxtend-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-upxtend-dark">Compatible Working Hours</p>
-                        <p className="text-sm text-gray-600">Our team works during <span className="font-semibold">your business hours</span></p>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-upxtend-primary to-blue-500 flex items-center justify-center text-white font-medium text-sm border-2 border-white relative z-10">
+                        QA
+                        <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
                       </div>
                     </div>
+                  </div>
+                  
+                  <div className="bg-upxtend-light/30 p-4 rounded-lg border border-upxtend-primary/10">
+                    <div className="flex flex-col space-y-3">
+                      <div className="flex items-start">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-medium mr-2 shrink-0">
+                          YOU
+                        </div>
+                        <div className="bg-white p-2 rounded-lg rounded-tl-none shadow-sm text-sm">
+                          Can we review the new feature implementation?
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start justify-end">
+                        <div className="bg-upxtend-primary p-2 rounded-lg rounded-tr-none shadow-sm text-white text-sm">
+                          Yes! I've prepared a demo for our standup today.
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-upxtend-primary to-blue-500 flex items-center justify-center text-white text-xs font-medium ml-2 shrink-0">
+                          PM
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <Clock className="w-5 h-5 text-upxtend-primary mr-3" />
+                    <div>
+                      <p className="font-medium text-gray-900">Same Working Hours</p>
+                      <p className="text-xs text-gray-500">Aligned with your business schedule</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-100 px-2 py-1 rounded text-green-800 text-xs font-medium">Active</div>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <Globe className="w-5 h-5 text-upxtend-primary mr-3" />
+                    <div>
+                      <p className="font-medium text-gray-900">Seamless Integration</p>
+                      <p className="text-xs text-gray-500">With your tools and processes</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-100 px-2 py-1 rounded text-green-800 text-xs font-medium">Connected</div>
+                </div>
+                
+                <div className="bg-upxtend-primary/10 p-3 rounded-lg border border-upxtend-primary/20">
+                  <div className="flex items-center">
+                    <Shield className="w-5 h-5 text-upxtend-primary mr-3" />
+                    <p className="font-medium text-upxtend-primary">Risk-Free Trial Available</p>
                   </div>
                 </div>
               </div>
