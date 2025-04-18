@@ -1,13 +1,11 @@
-
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink, Clock, CheckCircle, BarChart, Users, Code, Globe, CalendarDays, MessageSquare, Video } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, CheckCircle, BarChart, Users, Code, Globe, CalendarDays, MessageSquare, Video, ExternalLink } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-// Expanded detailed data for ongoing partnerships
 const caseStudiesData = [
   {
     id: "techmate-sydney",
@@ -77,7 +75,6 @@ const caseStudiesData = [
     ],
     continuedSupport: "Our team continues to evolve with TechMate's growing needs, adding specialized skills as required and scaling with their business growth."
   },
-  // Additional case studies would be defined here
 ];
 
 const CaseStudyDetail = () => {
@@ -86,7 +83,6 @@ const CaseStudyDetail = () => {
   const { toast } = useToast();
   
   useEffect(() => {
-    // In a real app, this would be an API call
     const foundStudy = caseStudiesData.find(s => s.id === id);
     setStudy(foundStudy || null);
     
@@ -125,7 +121,6 @@ const CaseStudyDetail = () => {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-upxtend-light to-white relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <Link to="/case-studies" className="inline-flex items-center text-upxtend-primary mb-6 hover:underline">
@@ -169,7 +164,6 @@ const CaseStudyDetail = () => {
         <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-tl from-upxtend-primary/5 to-transparent -z-0"></div>
       </section>
       
-      {/* Team Composition & Daily Schedule */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -283,7 +277,6 @@ const CaseStudyDetail = () => {
         </div>
       </section>
       
-      {/* Challenge & Solution */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -330,7 +323,6 @@ const CaseStudyDetail = () => {
         </div>
       </section>
       
-      {/* Results */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
@@ -366,7 +358,6 @@ const CaseStudyDetail = () => {
         </div>
       </section>
       
-      {/* Ongoing Support */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
@@ -388,7 +379,6 @@ const CaseStudyDetail = () => {
         </div>
       </section>
       
-      {/* Gallery */}
       {study.images && study.images.length > 0 && (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -409,7 +399,6 @@ const CaseStudyDetail = () => {
         </section>
       )}
       
-      {/* CTA */}
       <section className="py-16 bg-upxtend-primary text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to extend your team?</h2>
