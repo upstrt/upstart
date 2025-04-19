@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Users, MessageSquare, Video, GitBranch, GitMerge, Bug, GitPullRequest, CheckCircle } from 'lucide-react';
 import useSound from 'use-sound';
@@ -183,8 +182,9 @@ export const StandupAnimation = () => {
           </div>
         ))}
       </div>
-
-      <style jsx>{`
+      
+      <style>
+        {`
         @keyframes slideIn {
           from {
             opacity: 0;
@@ -204,7 +204,8 @@ export const StandupAnimation = () => {
             transform: translateY(-3px);
           }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
