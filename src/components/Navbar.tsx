@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Calendar } from "lucide-react";
@@ -40,7 +39,11 @@ export function Navbar({ onSectionClick }: NavbarProps) {
   };
   
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-lg shadow-lg py-2" : "py-4"}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? "bg-white/90 backdrop-blur-lg shadow-lg py-2" 
+        : "py-4"
+    }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">

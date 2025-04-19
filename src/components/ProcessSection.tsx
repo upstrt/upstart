@@ -1,4 +1,3 @@
-
 import { Check, ArrowDown, Lock, Code, Users, MessageSquare, FileCode, Zap } from "lucide-react";
 import { useState } from "react";
 
@@ -62,7 +61,6 @@ export function ProcessSection() {
   
   return (
     <section id="process" className="py-16 md:py-24 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
-      {/* Glass effect background blobs */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-400/10 rounded-full filter blur-3xl"></div>
       
@@ -75,7 +73,6 @@ export function ProcessSection() {
           </p>
         </div>
         
-        {/* Process steps navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
           {steps.map((step, index) => (
             <button
@@ -96,7 +93,6 @@ export function ProcessSection() {
           ))}
         </div>
         
-        {/* Active step content */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mt-10">
           <div className="md:col-span-5 order-2 md:order-1">
             <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-blue-100/20 p-6 md:p-8 transform transition-all duration-500">
@@ -150,10 +146,8 @@ export function ProcessSection() {
           </div>
           
           <div className="md:col-span-2 flex justify-center order-1 md:order-2">
-            {/* Vertical progress line */}
             <div className="hidden md:flex flex-col items-center h-full">
               <div className="h-full w-1 bg-gradient-to-b from-blue-300 to-purple-300 rounded-full relative">
-                {/* Animated dot */}
                 <div 
                   className="absolute w-4 h-4 bg-white rounded-full border-2 border-blue-500 shadow-lg left-1/2 transform -translate-x-1/2"
                   style={{ top: `${(activeStep / (steps.length - 1)) * 100}%` }}
@@ -166,26 +160,18 @@ export function ProcessSection() {
           
           <div className="md:col-span-5 order-3">
             <div className="p-6 bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-blue-100/20">
-              {/* Active step visualization */}
               {activeStep === 0 && (
                 <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div className="bg-white p-8 rounded-xl shadow-lg w-10/12 transform transition-all duration-300 hover:scale-105">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="font-bold text-blue-800">Project Blueprint</h4>
-                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Shared with you</span>
+                    <div className="bg-white p-8 rounded-xl shadow-lg w-10/12 transform hover:scale-105 transition-all duration-300">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <Users className="w-6 h-6 text-blue-600" />
+                        <h4 className="font-bold text-blue-800">Technical Assessment</h4>
                       </div>
-                      <div className="space-y-4">
-                        <div className="h-3 bg-gray-200 rounded-full w-full"></div>
-                        <div className="h-3 bg-gray-200 rounded-full w-3/4"></div>
-                        <div className="h-3 bg-gray-200 rounded-full w-5/6"></div>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
-                        <div className="text-sm text-gray-500">Updated: Today</div>
-                        <div className="flex items-center">
-                          <FileCode className="w-4 h-4 text-blue-600 mr-1" />
-                          <span className="text-sm text-blue-600">100% Transparent</span>
-                        </div>
+                      <div className="space-y-3">
+                        <div className="h-3 bg-blue-100 rounded-full w-full animate-pulse" />
+                        <div className="h-3 bg-blue-100 rounded-full w-3/4 animate-pulse" />
+                        <div className="h-3 bg-blue-100 rounded-full w-5/6 animate-pulse" />
                       </div>
                     </div>
                   </div>
@@ -195,90 +181,21 @@ export function ProcessSection() {
               {activeStep === 1 && (
                 <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div className="grid grid-cols-3 gap-2 w-10/12">
+                    <div className="grid grid-cols-3 gap-3 w-10/12">
                       {[1, 2, 3].map((num) => (
-                        <div key={num} className="bg-white rounded-lg p-3 shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        <div 
+                          key={num} 
+                          className="bg-white rounded-lg p-3 shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                        >
                           <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-3 flex items-center justify-center text-white">
                             {['JS', 'AK', 'RL'][num-1]}
                           </div>
-                          <div className="text-xs text-center">
-                            <p className="font-medium text-gray-900">{['James S.', 'Aanya K.', 'Ryan L.'][num-1]}</p>
-                            <p className="text-gray-600">{['Frontend', 'Backend', 'DevOps'][num-1]}</p>
+                          <div className="text-center">
+                            <p className="font-medium text-sm">{['James S.', 'Aanya K.', 'Ryan L.'][num-1]}</p>
+                            <p className="text-xs text-gray-600">{['Frontend', 'Backend', 'DevOps'][num-1]}</p>
                           </div>
                         </div>
                       ))}
-                      <div className="col-span-3 text-center mt-2 text-sm text-blue-600 font-medium">
-                        You interview and approve each member
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {activeStep === 2 && (
-                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div className="w-10/12 bg-white rounded-lg shadow-lg p-4 font-mono text-sm overflow-hidden">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center">
-                          <Code className="w-5 h-5 text-blue-600 mr-2" />
-                          <span className="font-medium">repository / main</span>
-                        </div>
-                        <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">You have full access</span>
-                      </div>
-                      <div className="bg-gray-100 p-3 rounded-md overflow-hidden">
-                        <div className="flex">
-                          <span className="text-gray-500 mr-2">1</span>
-                          <span className="text-blue-600">const</span>
-                          <span className="text-black mx-1">ownership</span>
-                          <span className="text-blue-600 mr-1">=</span>
-                          <span className="text-green-600">'belongs_to_client'</span>
-                        </div>
-                        <div className="flex">
-                          <span className="text-gray-500 mr-2">2</span>
-                          <span className="text-blue-600">const</span>
-                          <span className="text-black mx-1">rights</span>
-                          <span className="text-blue-600 mr-1">=</span>
-                          <span className="text-green-600">'full_ip_ownership'</span>
-                        </div>
-                        <div className="flex">
-                          <span className="text-gray-500 mr-2">3</span>
-                          <span className="text-blue-600">const</span>
-                          <span className="text-black mx-1">transparency</span>
-                          <span className="text-blue-600 mr-1">=</span>
-                          <span className="text-purple-600">true</span>
-                        </div>
-                      </div>
-                      <div className="mt-3 text-xs text-gray-500">
-                        Last commit: 5 minutes ago • Daily updates • 100% ownership
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {activeStep === 3 && (
-                <div className="relative h-64 overflow-hidden rounded-lg animate-fadeIn">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div className="w-10/12 bg-white rounded-lg shadow-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-bold text-blue-800">Daily Communication</h4>
-                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">AU Timezone</span>
-                      </div>
-                      <div className="space-y-2">
-                        {['9:00 AM: Standup Meeting', '10:30 AM: Sprint Planning', '2:00 PM: Code Review', '4:30 PM: Progress Update'].map((item, i) => (
-                          <div key={i} className="flex items-center p-2 bg-gray-50 rounded-md">
-                            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                            <span className="text-sm">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-3 text-center text-sm">
-                        <div className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 px-3 py-1 rounded-full">
-                          <Zap className="w-4 h-4 text-yellow-500 mr-1" />
-                          <span className="text-blue-700">Always in sync with your team</span>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -287,7 +204,6 @@ export function ProcessSection() {
           </div>
         </div>
         
-        {/* Progress dots (mobile only) */}
         <div className="flex justify-center space-x-2 mt-8 md:hidden">
           {steps.map((_, index) => (
             <button
