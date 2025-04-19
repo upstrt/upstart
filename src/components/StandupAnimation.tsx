@@ -1,16 +1,21 @@
+
 import { useState, useEffect } from 'react';
 import { Users, MessageSquare, Video, GitBranch, GitMerge, Bug, GitPullRequest, CheckCircle, Mic, Camera } from 'lucide-react';
 import useSound from 'use-sound';
-import { useTheme } from '@/contexts/ThemeContext';
-import { Switch } from './ui/switch';
+
+interface Participant {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string | null;
+}
 
 export const StandupAnimation = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [playPop] = useSound('/sounds/pop.mp3', { volume: 0.5 });
-  const { isDark, toggleTheme } = useTheme();
   
-  const participants = [
+  const participants: Participant[] = [
     { id: 'YT', name: 'You (Team Lead)', role: 'Client', avatar: '/lovable-uploads/6544135d-288c-47a7-a417-6b7d587f1394.png' },
     { id: 'AK', name: 'Alex Kumar', role: 'Developer', avatar: null },
     { id: 'JS', name: 'Jessica Smith', role: 'Product Manager', avatar: null },
@@ -228,21 +233,11 @@ export const StandupAnimation = () => {
       clearInterval(interval);
       clearInterval(speakingInterval);
     };
-  }, [playPop]);
+  }, [playPop, steps.length]);
   
   return (
-    <div className={`relative p-8 h-[700px] ${isDark ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-purple-50'}`}>
-      <div className="absolute top-4 right-4 flex items-center gap-2">
-        <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          {isDark ? 'Dark' : 'Light'} Mode
-        </span>
-        <Switch
-          checked={isDark}
-          onCheckedChange={toggleTheme}
-        />
-      </div>
-
-      <div className="relative h-full overflow-hidden rounded-xl backdrop-blur-lg border border-gray-200 dark:border-gray-800">
+    <div className="relative p-8 h-[700px] bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="relative h-full overflow-hidden rounded-xl backdrop-blur-lg border border-gray-200">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-3">
@@ -252,11 +247,11 @@ export const StandupAnimation = () => {
                   alt={participants[0].name}
                   className="w-12 h-12 rounded-full object-cover"
                 />
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 animate-pulse" />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
               </div>
               <div>
-                <div className="font-medium text-lg dark:text-white">Daily Sync</div>
-                <div className="flex items-center space-x-3 text-sm text-gray-500 dark:text-gray-400">
+                <div className="font-medium text-lg">Daily Sync</div>
+                <div className="flex items-center space-x-3 text-sm text-gray-500">
                   <span className="inline-flex items-center">
                     <Video className="w-4 h-4 mr-1 text-green-500" />
                     Live
@@ -272,7 +267,7 @@ export const StandupAnimation = () => {
                 </div>
               </div>
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">9:30 AM AEST</div>
+            <div className="text-sm text-gray-500">9:30 AM AEST</div>
           </div>
           
           <div className="grid grid-cols-4 gap-4">
@@ -296,10 +291,10 @@ export const StandupAnimation = () => {
                       <span className="text-lg font-medium text-white">{participant.id}</span>
                     )}
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900" />
+                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
                   <div className="mt-2 text-center">
-                    <p className="text-sm font-medium dark:text-white">{participant.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{participant.role}</p>
+                    <p className="text-sm font-medium">{participant.name}</p>
+                    <p className="text-xs text-gray-500">{participant.role}</p>
                   </div>
                 </div>
               </div>
