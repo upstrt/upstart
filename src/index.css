@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,11 +25,27 @@
     --ring: 212 100% 40%;
     --radius: 0.5rem;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 
   body {
@@ -45,7 +60,6 @@
     @apply bg-gradient-to-r from-upxtend-primary to-upxtend-accent bg-clip-text text-transparent;
   }
   
-  /* New gradient text for hero section */
   .gradient-text-hero {
     @apply bg-gradient-to-r from-upxtend-primary via-upxtend-dark to-upxtend-primary bg-clip-text text-transparent;
   }
@@ -66,7 +80,6 @@
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
   
-  /* Enhanced animations and styles */
   .blob {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     background-size: cover;
@@ -93,7 +106,6 @@
     }
   }
   
-  /* Enhanced pulse animation */
   .pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -107,7 +119,6 @@
     }
   }
   
-  /* Subtle pulse animation */
   .pulse-subtle {
     animation: pulse-subtle 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -121,7 +132,6 @@
     }
   }
   
-  /* Floating animations with varying speeds */
   .floating {
     animation: floating 6s ease-in-out infinite;
   }
@@ -152,7 +162,6 @@
     }
   }
   
-  /* Spinning animation */
   .spin-slow {
     animation: spin 15s linear infinite;
   }
@@ -166,7 +175,6 @@
     }
   }
   
-  /* Horizontal bounce animation */
   .bounce-horizontal {
     animation: bounce-horizontal 1s infinite;
   }
@@ -180,7 +188,6 @@
     }
   }
   
-  /* Vertical bounce with delay */
   .bounce-slow {
     animation: bounce 2s ease infinite 1s;
   }
@@ -194,7 +201,6 @@
     }
   }
   
-  /* Gradient animation */
   .animate-gradient-x {
     animation: gradient-x 8s ease infinite;
     background-size: 200% 200%;
@@ -212,7 +218,6 @@
     }
   }
   
-  /* Glow effect */
   .shadow-glow-blue {
     box-shadow: 0 0 15px rgba(0, 102, 204, 0.5);
   }

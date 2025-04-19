@@ -19,23 +19,25 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/solutions" element={<Solutions />} />
-            <Route path="/process" element={<ProcessPage />} />
-            <Route path="/calculator" element={<Calculator />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
-            <Route path="/expertise" element={<ExpertisePage />} />
-            <Route path="/expertise/:id" element={<ExpertiseDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/solutions" element={<Solutions />} />
+              <Route path="/process" element={<ProcessPage />} />
+              <Route path="/calculator" element={<Calculator />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
+              <Route path="/expertise" element={<ExpertisePage />} />
+              <Route path="/expertise/:id" element={<ExpertiseDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </div>
     </ThemeProvider>
   </QueryClientProvider>
 );
