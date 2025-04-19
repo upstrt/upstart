@@ -1,3 +1,4 @@
+
 import { Check, ArrowDown, Lock, Code, Users, MessageSquare, FileCode, Zap } from "lucide-react";
 import { useState } from "react";
 import { ProcessAnimation } from './ProcessAnimation';
@@ -5,7 +6,6 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
-  const { isDark } = useTheme();
   
   const steps = [
     {
@@ -63,9 +63,7 @@ export function ProcessSection() {
   ];
   
   return (
-    <section id="process" className={`py-16 md:py-24 relative overflow-hidden ${
-      isDark ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30'
-    }`}>
+    <section id="process" className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30">
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-400/10 rounded-full filter blur-3xl"></div>
       
