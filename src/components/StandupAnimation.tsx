@@ -1,13 +1,22 @@
-
 import { useState, useEffect } from 'react';
 import { Users, MessageSquare, Video, GitBranch, GitMerge, Bug, GitPullRequest, CheckCircle, Mic, Camera } from 'lucide-react';
 import useSound from 'use-sound';
+import { useTheme } from '@/contexts/ThemeContext';
+import { Switch } from './ui/switch';
 
 export const StandupAnimation = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [playPop] = useSound('/sounds/pop.mp3', { volume: 0.5 });
+  const { isDark, toggleTheme } = useTheme();
   
+  const participants = [
+    { id: 'YT', name: 'You (Team Lead)', role: 'Client', avatar: '/lovable-uploads/6544135d-288c-47a7-a417-6b7d587f1394.png' },
+    { id: 'AK', name: 'Alex Kumar', role: 'Developer', avatar: null },
+    { id: 'JS', name: 'Jessica Smith', role: 'Product Manager', avatar: null },
+    { id: 'RL', name: 'Ryan Lee', role: 'QA Engineer', avatar: null }
+  ];
+
   const steps = [
     {
       title: "Daily Standup",
@@ -222,50 +231,82 @@ export const StandupAnimation = () => {
   }, [playPop]);
   
   return (
-    <div className="relative p-8 h-[600px]">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl opacity-50" />
-      <div className="relative h-full">
-        {steps.map((step, idx) => (
-          <div
-            key={idx}
-            className={`transform transition-all duration-700 absolute inset-0 ${
-              idx === currentStep 
-                ? 'opacity-100 translate-y-0 scale-100' 
-                : 'opacity-0 translate-y-8 scale-95'
-            }`}
-          >
-            <div className="flex items-center mb-6">
-              {step.icon}
-              <h3 className="text-2xl font-semibold ml-3">{step.title}</h3>
-            </div>
-            {step.content}
-          </div>
-        ))}
+    <div className={`relative p-8 h-[700px] ${isDark ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-purple-50'}`}>
+      <div className="absolute top-4 right-4 flex items-center gap-2">
+        <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          {isDark ? 'Dark' : 'Light'} Mode
+        </span>
+        <Switch
+          checked={isDark}
+          onCheckedChange={toggleTheme}
+        />
       </div>
-      
-      <style>
-        {`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
 
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-3px);
-          }
-        }
-        `}
-      </style>
+      <div className="relative h-full overflow-hidden rounded-xl backdrop-blur-lg border border-gray-200 dark:border-gray-800">
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-3">
+              <div className="relative">
+                <img 
+                  src={participants[0].avatar || `https://ui-avatars.com/api/?name=${participants[0].id}&background=random`}
+                  alt={participants[0].name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 animate-pulse" />
+              </div>
+              <div>
+                <div className="font-medium text-lg dark:text-white">Daily Sync</div>
+                <div className="flex items-center space-x-3 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="inline-flex items-center">
+                    <Video className="w-4 h-4 mr-1 text-green-500" />
+                    Live
+                  </span>
+                  <span className="inline-flex items-center">
+                    <Mic className={`w-4 h-4 mr-1 ${isSpeaking ? 'text-blue-500 animate-pulse' : 'text-gray-400'}`} />
+                    {isSpeaking ? 'Speaking' : 'Muted'}
+                  </span>
+                  <span className="inline-flex items-center">
+                    <Camera className="w-4 h-4 mr-1 text-blue-500" />
+                    On
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">9:30 AM AEST</div>
+          </div>
+          
+          <div className="grid grid-cols-4 gap-4">
+            {participants.map((participant, i) => (
+              <div 
+                key={i} 
+                className={`transform transition-all duration-500 ${
+                  i <= currentStep % 4 ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
+                }`}
+                style={{ transitionDelay: `${i * 200}ms` }}
+              >
+                <div className="relative group">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    {participant.avatar ? (
+                      <img 
+                        src={participant.avatar} 
+                        alt={participant.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-lg font-medium text-white">{participant.id}</span>
+                    )}
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900" />
+                  <div className="mt-2 text-center">
+                    <p className="text-sm font-medium dark:text-white">{participant.name}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{participant.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
