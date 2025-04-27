@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Calendar } from "lucide-react";
@@ -40,18 +41,18 @@ export function Navbar({ onSectionClick }: NavbarProps) {
   };
   
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 dark:bg-gray-900/90 ${
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-lg py-2" 
+        ? "bg-white/90 backdrop-blur-lg shadow-lg py-2" 
         : "py-4"
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link to="/" className="relative w-32 h-8">
+            <Link to="/" className="relative w-40 h-10">
               <img 
-                src="/lovable-uploads/d45ec594-8a8e-48e3-a3e1-3a79db8c91fb.png" 
-                alt="Upxtend Logo" 
+                src="/lovable-uploads/be245e2a-a8c2-42b7-a298-8a5eb2d976c8.png" 
+                alt="OutTeams Logo" 
                 className="w-full h-full object-contain"
               />
             </Link>
@@ -62,59 +63,59 @@ export function Navbar({ onSectionClick }: NavbarProps) {
               <>
                 <button 
                   onClick={() => handleNavClick("home")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   Home
                 </button>
                 <button 
                   onClick={() => handleNavClick("services")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   Solutions
                 </button>
                 <button 
                   onClick={() => handleNavClick("process")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   How It Works
                 </button>
                 <button 
                   onClick={() => handleNavClick("calculator")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   Cost Calculator
                 </button>
                 <button 
                   onClick={() => handleNavClick("case-studies")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   Partnerships
                 </button>
                 <button 
                   onClick={() => handleNavClick("team")} 
-                  className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors"
                 >
                   Our Team
                 </button>
               </>
             ) : (
               <>
-                <Link to="/" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   Home
                 </Link>
-                <Link to="/solutions" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/solutions" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   Solutions
                 </Link>
-                <Link to="/process" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/process" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   How It Works
                 </Link>
-                <Link to="/calculator" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/calculator" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   Cost Calculator
                 </Link>
-                <Link to="/case-studies" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/case-studies" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   Partnerships
                 </Link>
-                <Link to="/expertise" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                <Link to="/expertise" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                   Our Expertise
                 </Link>
               </>
@@ -123,7 +124,7 @@ export function Navbar({ onSectionClick }: NavbarProps) {
             <Link to="/process" onClick={handleConsultation}>
               <Button 
                 size="sm" 
-                className="bg-upxtend-primary hover:bg-upxtend-dark text-white dark:bg-upxtend-dark dark:hover:bg-upxtend-primary relative overflow-hidden group shine font-semibold px-5 py-2.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-outteams-primary hover:bg-outteams-dark text-white relative overflow-hidden group shine font-semibold px-5 py-2.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <span className="relative flex items-center gap-1 z-10">
                   <Calendar className="w-4 h-4 mr-1" />
@@ -136,72 +137,72 @@ export function Navbar({ onSectionClick }: NavbarProps) {
           
           <div className="md:hidden flex items-center">
             <ThemeToggle />
-            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" className="p-1 ml-2 rounded-md hover:bg-upxtend-light dark:hover:bg-gray-800">
-              {isOpen ? <X className="text-upxtend-primary dark:text-white" /> : <Menu className="text-upxtend-primary dark:text-white" />}
+            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" className="p-1 ml-2 rounded-md hover:bg-outteams-light">
+              {isOpen ? <X className="text-outteams-primary" /> : <Menu className="text-outteams-primary" />}
             </button>
           </div>
         </div>
         
         {isOpen && (
-          <div className="md:hidden mt-4 py-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-lg shadow-lg animate-fadeIn">
+          <div className="md:hidden mt-4 py-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg animate-fadeIn">
             <div className="flex flex-col space-y-4 px-6">
               {isHomePage ? (
                 <>
                   <button 
                     onClick={() => handleNavClick("home")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     Home
                   </button>
                   <button 
                     onClick={() => handleNavClick("services")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     Solutions
                   </button>
                   <button 
                     onClick={() => handleNavClick("process")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     How It Works
                   </button>
                   <button 
                     onClick={() => handleNavClick("calculator")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     Cost Calculator
                   </button>
                   <button 
                     onClick={() => handleNavClick("case-studies")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     Partnerships
                   </button>
                   <button 
                     onClick={() => handleNavClick("team")} 
-                    className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors text-left py-1"
+                    className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors text-left py-1"
                   >
                     Our Team
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     Home
                   </Link>
-                  <Link to="/solutions" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/solutions" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     Solutions
                   </Link>
-                  <Link to="/process" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/process" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     How It Works
                   </Link>
-                  <Link to="/calculator" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/calculator" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     Cost Calculator
                   </Link>
-                  <Link to="/case-studies" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/case-studies" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     Partnerships
                   </Link>
-                  <Link to="/expertise" className="text-sm font-medium text-gray-700 hover:text-upxtend-primary transition-colors">
+                  <Link to="/expertise" className="text-sm font-medium text-gray-700 hover:text-outteams-primary transition-colors">
                     Our Expertise
                   </Link>
                 </>
@@ -210,7 +211,7 @@ export function Navbar({ onSectionClick }: NavbarProps) {
               <Link to="/process" onClick={handleConsultation}>
                 <Button 
                   size="sm" 
-                  className="bg-upxtend-primary hover:bg-upxtend-dark text-white dark:bg-upxtend-dark dark:hover:bg-upxtend-primary w-full flex items-center justify-center gap-2"
+                  className="bg-outteams-primary hover:bg-outteams-dark text-white w-full flex items-center justify-center gap-2"
                 >
                   <Calendar className="w-4 h-4" />
                   Book Free Consultation <ChevronRight className="w-3.5 h-3.5 ml-1" />

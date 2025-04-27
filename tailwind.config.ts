@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				upxtend: {
-					primary: '#0066cc',
-					secondary: '#3498db',
+				outteams: {
+					primary: '#0055A4',
+					secondary: '#0FA0CE',
 					light: '#E6F0FF',
-					dark: '#004999',
+					dark: '#003A72',
 					gray: '#64748B',
-					accent: '#2980b9',
+					accent: '#0077CC',
 					lightGray: '#F1F5F9',
 					white: '#FFFFFF'
 				}
@@ -115,6 +115,8 @@ export default {
 			backgroundImage: {
 				'hero-pattern': "url('/public/lovable-uploads/940c8fee-ecd7-4c7e-91d3-4873257cba7a.png')",
 				'australia-map': "url('/public/lovable-uploads/5bfe903f-bc5f-4b18-9687-cf5720f77500.png')",
+				'outteams-logo': "url('/public/lovable-uploads/be245e2a-a8c2-42b7-a298-8a5eb2d976c8.png')",
+				'outteams-logo-white': "url('/public/lovable-uploads/a0e9ba12-6874-4fad-94c5-73764799514f.png')",
 			}
 		}
 	},

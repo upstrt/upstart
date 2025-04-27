@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Globe, Users, Shield, Code, Clock, CheckCircle, MessageSquare, Video, GitMerge, GitPullRequest } from "lucide-react";
+import { ArrowRight, Calendar, Globe, Users, Shield, Code, Clock, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -50,28 +51,28 @@ export function HeroSection() {
   
   return (
     <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden hero-gradient">
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-upxtend-light/10 to-white/80 opacity-70"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-outteams-light/10 to-white/80 opacity-70"></div>
       
       {/* Animated background elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-upxtend-light/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float-slow"></div>
+      <div className="absolute top-20 right-10 w-64 h-64 bg-outteams-light/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float-slow"></div>
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-blue-200/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className={`space-y-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-upxtend-primary/20 shadow-sm">
-              <span className="w-2 h-2 bg-upxtend-primary rounded-full animate-pulse"></span>
-              <span className="text-sm font-medium text-upxtend-dark">Your Extended Tech Team</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-outteams-primary/20 shadow-sm">
+              <span className="w-2 h-2 bg-outteams-primary rounded-full animate-pulse"></span>
+              <span className="text-sm font-medium text-outteams-dark">Your Extended Tech Team</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="gradient-text-hero">Your In-House Tech Team,</span>
               <br />
               <span className="inline-flex items-baseline">
-                Just <span className="text-upxtend-primary mx-2 relative">
+                Just <span className="text-outteams-primary mx-2 relative">
                   Remote
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <path d="M0,10 Q50,0 100,10" stroke="#0066cc" strokeWidth="2" fill="none"/>
+                    <path d="M0,10 Q50,0 100,10" stroke="#0055A4" strokeWidth="2" fill="none"/>
                   </svg>
                 </span>
               </span>
@@ -79,14 +80,14 @@ export function HeroSection() {
             
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
               We integrate seamlessly with your business, just like an in-house team. Same daily standups, 
-              sprint planning, and real-time collaboration – aligned with <span className="text-upxtend-primary font-medium">Australian business hours</span>.
+              sprint planning, and real-time collaboration – aligned with <span className="text-outteams-primary font-medium">Australian business hours</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/process">
                 <Button 
                   size="lg" 
-                  className="bg-upxtend-primary hover:bg-upxtend-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group animate-pulse-subtle"
+                  className="bg-outteams-primary hover:bg-outteams-dark text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group animate-pulse-subtle"
                   onClick={handleConsultation}
                 >
                   <Calendar className="w-5 h-5" />
@@ -99,7 +100,7 @@ export function HeroSection() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-upxtend-primary text-upxtend-primary hover:bg-upxtend-light flex items-center gap-2"
+                  className="border-outteams-primary text-outteams-primary hover:bg-outteams-light flex items-center gap-2"
                 >
                   <Users className="w-5 h-5" />
                   Explore Our Expertise
@@ -119,8 +120,8 @@ export function HeroSection() {
                   data-aos="fade-up" 
                   data-aos-delay={`${index * 100}`}
                 >
-                  <div className="bg-upxtend-light rounded-full p-1.5">
-                    <item.icon className="w-4 h-4 text-upxtend-primary" />
+                  <div className="bg-outteams-light rounded-full p-1.5">
+                    <item.icon className="w-4 h-4 text-outteams-primary" />
                   </div>
                   <span className="text-sm font-medium text-gray-700">{item.text}</span>
                 </div>

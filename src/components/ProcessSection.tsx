@@ -2,7 +2,6 @@
 import { Check, ArrowDown, Lock, Code, Users, MessageSquare, FileCode, Zap } from "lucide-react";
 import { useState } from "react";
 import { ProcessAnimation } from './ProcessAnimation';
-import { useTheme } from '@/contexts/ThemeContext';
 
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -12,7 +11,7 @@ export function ProcessSection() {
       number: "01",
       title: "Technical Consultation",
       description: "We start by understanding your business goals, technical requirements, and team structure to create the perfect integration plan.",
-      icon: <FileCode className="w-12 h-12 text-blue-600" />,
+      icon: <FileCode className="w-12 h-12 text-outteams-primary" />,
       benefits: [
         "In-depth technical assessment",
         "Team structure planning",
@@ -38,7 +37,7 @@ export function ProcessSection() {
       number: "03",
       title: "Transparent Development",
       description: "Your team delivers high-quality code with daily updates, always maintaining clear communication and complete code ownership.",
-      icon: <Code className="w-12 h-12 text-blue-600" />,
+      icon: <Code className="w-12 h-12 text-outteams-primary" />,
       benefits: [
         "100% code ownership for clients",
         "Daily progress updates",
@@ -82,13 +81,13 @@ export function ProcessSection() {
               key={index}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2
                 ${activeStep === index 
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-110' 
+                  ? 'bg-gradient-to-r from-outteams-primary to-outteams-secondary text-white shadow-lg scale-110' 
                   : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                 }`}
               onClick={() => setActiveStep(index)}
             >
               <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs 
-                ${activeStep === index ? 'bg-white text-blue-700' : 'bg-blue-100 text-blue-700'}`}>
+                ${activeStep === index ? 'bg-white text-outteams-primary' : 'bg-blue-100 text-outteams-primary'}`}>
                 {step.number}
               </div>
               {step.title}
@@ -101,12 +100,12 @@ export function ProcessSection() {
             <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-blue-100/20 p-6 md:p-8 transform transition-all duration-500">
               <div className="flex items-center mb-6">
                 <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-full p-3 mr-4 step-number">
-                  <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{steps[activeStep].number}</span>
+                  <span className="text-xl font-bold bg-gradient-to-r from-outteams-primary to-outteams-secondary bg-clip-text text-transparent">{steps[activeStep].number}</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-semibold">{steps[activeStep].title}</h3>
               </div>
               
-              <div className="mb-6 text-blue-600">
+              <div className="mb-6 text-outteams-primary">
                 {steps[activeStep].icon}
               </div>
               
@@ -126,7 +125,7 @@ export function ProcessSection() {
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-blue-100/50">
                 <div className="flex items-start">
                   <div className="mr-2 mt-1">
-                    <Lock className="w-4 h-4 text-blue-600" />
+                    <Lock className="w-4 h-4 text-outteams-primary" />
                   </div>
                   <p className="text-blue-800 font-medium">
                     <strong>Key Promise:</strong> {steps[activeStep].emphasis}
@@ -138,7 +137,7 @@ export function ProcessSection() {
                 <div className="mt-6 text-center">
                   <button 
                     onClick={() => setActiveStep(prev => Math.min(prev + 1, steps.length - 1))}
-                    className="inline-flex items-center justify-center text-sm text-blue-600 hover:text-purple-600 transition-colors"
+                    className="inline-flex items-center justify-center text-sm text-outteams-primary hover:text-purple-600 transition-colors"
                   >
                     Next Step
                     <ArrowDown className="w-4 h-4 ml-1 transform rotate-90" />
@@ -152,10 +151,10 @@ export function ProcessSection() {
             <div className="hidden md:flex flex-col items-center h-full">
               <div className="h-full w-1 bg-gradient-to-b from-blue-300 to-purple-300 rounded-full relative">
                 <div 
-                  className="absolute w-4 h-4 bg-white rounded-full border-2 border-blue-500 shadow-lg left-1/2 transform -translate-x-1/2"
+                  className="absolute w-4 h-4 bg-white rounded-full border-2 border-outteams-primary shadow-lg left-1/2 transform -translate-x-1/2"
                   style={{ top: `${(activeStep / (steps.length - 1)) * 100}%` }}
                 >
-                  <div className="absolute w-full h-full rounded-full bg-blue-500 animate-ping opacity-75"></div>
+                  <div className="absolute w-full h-full rounded-full bg-outteams-primary animate-ping opacity-75"></div>
                 </div>
               </div>
             </div>
@@ -168,8 +167,8 @@ export function ProcessSection() {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
                     <div className="bg-white p-8 rounded-xl shadow-lg w-10/12 transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center space-x-3 mb-4">
-                        <Users className="w-6 h-6 text-blue-600" />
-                        <h4 className="font-bold text-blue-800">Technical Assessment</h4>
+                        <Users className="w-6 h-6 text-outteams-primary" />
+                        <h4 className="font-bold text-outteams-primary">Technical Assessment</h4>
                       </div>
                       <div className="space-y-3">
                         <div className="h-3 bg-blue-100 rounded-full w-full animate-pulse" />
@@ -190,7 +189,7 @@ export function ProcessSection() {
                           key={num} 
                           className="bg-white rounded-lg p-3 shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
                         >
-                          <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-3 flex items-center justify-center text-white">
+                          <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-outteams-primary to-outteams-secondary mb-3 flex items-center justify-center text-white">
                             {['JS', 'AK', 'RL'][num-1]}
                           </div>
                           <div className="text-center">
@@ -214,7 +213,7 @@ export function ProcessSection() {
               onClick={() => setActiveStep(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 activeStep === index 
-                  ? 'bg-blue-600 scale-125' 
+                  ? 'bg-outteams-primary scale-125' 
                   : 'bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to step ${index + 1}`}

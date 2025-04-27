@@ -1,3 +1,4 @@
+
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
@@ -61,7 +62,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white relative overflow-x-hidden" ref={sectionsRef}>
       {/* Professional glass gradient background effect */}
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-100/50 via-indigo-100/30 to-white opacity-70 z-0"></div>
+      <div className="fixed inset-0 bg-gradient-to-br from-outteams-light/50 via-blue-100/30 to-white opacity-70 z-0"></div>
       <div className="fixed inset-0 backdrop-blur-[100px] z-0"></div>
       
       {/* Content */}
